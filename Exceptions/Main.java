@@ -6,7 +6,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         //Exception01.iniciarApp(sc);
         //Exception02.convertirEntero(sc);
-        try {
+       /* try {
             Exception03.printPositionArray(sc);
         }catch (ArrayIndexOutOfBoundsException e){
             System.out.println(e.getMessage());
@@ -15,8 +15,8 @@ public class Main {
         } finally {
             sc.close();
             System.out.println("Terminado");
-        }
+        */
+        Exception04.convertirAString(sc);
+        System.out.println("Terminado");
     }
-
-
 }
