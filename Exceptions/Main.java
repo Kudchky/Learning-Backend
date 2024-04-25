@@ -16,7 +16,8 @@ public class Main {
             sc.close();
             System.out.println("Terminado");
         */
-        Exception04.convertirAString(sc);
-        System.out.println("Terminado");
+//        Exception04.convertirAString(sc);
+//        System.out.println("Terminado");
+        Exception05.validarContrasenas(sc);
     }
 }
