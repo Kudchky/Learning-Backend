@@ -1,4 +1,4 @@
-package exceptions;
+package exceptions_contrasenas;
 
 public class PasswordValidator {
     public static void validatePassword(String password) throws WeakPasswordException{

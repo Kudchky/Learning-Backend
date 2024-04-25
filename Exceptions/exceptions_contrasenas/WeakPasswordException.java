@@ -1,4 +1,4 @@
-package exceptions;
+package exceptions_contrasenas;
 
 public class WeakPasswordException extends Exception {
     public WeakPasswordException(String message) {

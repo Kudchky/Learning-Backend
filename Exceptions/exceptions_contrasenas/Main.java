@@ -1,4 +1,4 @@
-package exceptions;
+package exceptions_contrasenas;
 
 import java.util.Scanner;
 
