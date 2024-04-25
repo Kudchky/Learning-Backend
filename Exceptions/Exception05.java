@@ -11,10 +11,10 @@ public class Exception05 {
         System.out.println("Ingrese su contrasena: ");
         String contrasena = sc.nextLine();
         try {
-            if (contrasena.length() < 8) {
-                throw new Exception("Ingrese una contrasena de 8 caracteres como minimo.");
-            }
-            if(isContainsNumbers(contrasena)) {
+//            if (contrasena.length() < 8) {
+//                throw new Exception("Ingrese una contrasena de 8 caracteres como minimo.");
+//            }
+            if(!isContainsNumbers(contrasena)) {
                 throw new Exception("Ingrese una contrasena que tenga por lo menos un numero");
             }
         } catch(Exception e) {
@@ -26,6 +26,7 @@ public class Exception05 {
         for (char el: caracteres) {
             int number = el - '0';
             if(number >= 0 && number <= 9) {
+                System.out.println("Contrasena fuerte...!");
                return true;
             }
         }
