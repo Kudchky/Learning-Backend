@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class ImplementarMovie implements ICatalog{
-    private ArrayList<Movie> movies;
+    private final ArrayList<Movie> movies;
 
     public ImplementarMovie() {
         this.movies = new ArrayList<>();
