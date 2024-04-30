@@ -1,7 +1,7 @@
 package com.gm.mundopc;
 
 public class Monitor {
-    private int idMonitor;
+    private final int idMonitor;
     private String marca;
     private double tamano;
     private static int contadorMonitores;
