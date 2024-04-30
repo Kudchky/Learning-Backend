@@ -8,7 +8,7 @@ public class Computadora {
     private Raton raton;
     private static int contadorComputadoras;
 
-    public Computadora() {
+    private Computadora() {
         this.idComputadora = ++Computadora.contadorComputadoras;
     }
 

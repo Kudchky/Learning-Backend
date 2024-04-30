@@ -6,7 +6,7 @@ public class Monitor {
     private double tamano;
     private static int contadorMonitores;
 
-    public Monitor() {
+    private Monitor() {
         this.idMonitor = ++Monitor.contadorMonitores;
     }
 

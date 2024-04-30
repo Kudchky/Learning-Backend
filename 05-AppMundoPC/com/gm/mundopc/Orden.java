@@ -22,7 +22,7 @@ public class Orden {
     }
 
     public void agregarComputadora(Computadora computadora) {
-        if(this.listaComputadoras.size() < MAX_COMPUTADORAS) {
+        if(this.listaComputadoras.size() < Orden.MAX_COMPUTADORAS) {
             this.listaComputadoras.add(computadora);
         } else {
             System.out.println("No se puede agregar mas computadoras, maximo " + MAX_COMPUTADORAS + " " +
