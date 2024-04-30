@@ -1,16 +1,17 @@
 package pe.com.gm.ventas;
 
 public class Producto {
-    private int idProducto;
+    private final int idProducto;
     private String nombre;
     private double precio;
-    public static int contadorProductos;
+    private static int contadorProductos;
 
     public Producto() {
+        this.idProducto = ++contadorProductos;
     }
 
     public Producto(String nombre, double precio) {
-        this.idProducto = ++contadorProductos;
+        this();
         this.nombre = nombre;
         this.precio = precio;
     }
@@ -37,10 +38,10 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "pe.com.gm.ventas.Producto{" +
-                "idProducto=" + idProducto +
-                ", nombre='" + nombre + '\'' +
+        return "Producto: {" + "\n" +
+                "idProducto=" + idProducto + "\n" +
+                ", nombre='" + nombre + '\'' + "\n" +
                 ", precio=" + precio +
-                '}';
+                '}' + "\n";
     }
 }

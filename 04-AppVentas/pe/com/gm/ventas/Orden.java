@@ -3,10 +3,10 @@ package pe.com.gm.ventas;
 import java.util.ArrayList;
 
 public class Orden {
-    private int idOrden;
-    private ArrayList<Producto> listaProductos;
-    public static int contadorOrdenes;
-    public static final int MAX_PRODUCTOS = 5;
+    private final int idOrden;
+    private final ArrayList<Producto> listaProductos;
+    private static int contadorOrdenes;
+    private static final int MAX_PRODUCTOS = 5;
 
     public Orden() {
         this.idOrden = ++contadorOrdenes;
@@ -24,9 +24,9 @@ public class Orden {
     public void agregarProducto(Producto producto) {
         if (this.listaProductos.size() < MAX_PRODUCTOS) {
             listaProductos.add(producto);
-            System.out.println("pe.com.gm.ventas.Producto se agrego correctamente");
+            System.out.println("Producto se agrego correctamente");
         } else {
-            System.out.println("No se puede agregar producto, 5 productos por pe.com.gm.ventas.Orden");
+            System.out.println("No se puede agregar producto, 5 productos por Orden");
         }
     }
 
@@ -40,10 +40,12 @@ public class Orden {
     }
 
     public void mostrarOrden() {
-        System.out.println("pe.com.gm.ventas.Orden{" +
+        System.out.println("Orden: {" +
                 "idOrden=" + idOrden +
                 ", listaProductos=" + listaProductos +
-                '}');
+                "Precio: " +
+                this.calcularTotal() +
+                "}");
     }
 
 }
