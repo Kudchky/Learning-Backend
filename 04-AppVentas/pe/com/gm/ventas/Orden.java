@@ -1,3 +1,5 @@
+package pe.com.gm.ventas;
+
 import java.util.ArrayList;
 
 public class Orden {
@@ -22,9 +24,9 @@ public class Orden {
     public void agregarProducto(Producto producto) {
         if (this.listaProductos.size() < MAX_PRODUCTOS) {
             listaProductos.add(producto);
-            System.out.println("Producto se agrego correctamente");
+            System.out.println("pe.com.gm.ventas.Producto se agrego correctamente");
         } else {
-            System.out.println("No se puede agregar producto, 5 productos por Orden");
+            System.out.println("No se puede agregar producto, 5 productos por pe.com.gm.ventas.Orden");
         }
     }
 
@@ -38,7 +40,7 @@ public class Orden {
     }
 
     public void mostrarOrden() {
-        System.out.println("Orden{" +
+        System.out.println("pe.com.gm.ventas.Orden{" +
                 "idOrden=" + idOrden +
                 ", listaProductos=" + listaProductos +
                 '}');

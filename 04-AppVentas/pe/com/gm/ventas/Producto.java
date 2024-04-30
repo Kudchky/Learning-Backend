@@ -1,3 +1,5 @@
+package pe.com.gm.ventas;
+
 public class Producto {
     private int idProducto;
     private String nombre;
@@ -35,7 +37,7 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "Producto{" +
+        return "pe.com.gm.ventas.Producto{" +
                 "idProducto=" + idProducto +
                 ", nombre='" + nombre + '\'' +
                 ", precio=" + precio +
