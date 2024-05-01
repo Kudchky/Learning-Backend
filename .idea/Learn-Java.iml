@@ -8,6 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/03-AppPeliculas" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/04-AppVentas" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/05-AppMundoPC" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Enums" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
