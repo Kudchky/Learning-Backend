@@ -7,6 +7,9 @@ public class TestEnumeraciones {
         System.out.println("Dia 1: " + Dias.LUNES);
 
         imprimirDiaSemana(Dias.DOMINGO);
+
+        System.out.println("Continente no. 4: " + Continentes.EUROPA);
+        System.out.println("Nro de paises en America: " + Continentes.AMERICA.getPaises());
     }
 
     public static void imprimirDiaSemana(Dias dia) {
