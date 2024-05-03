@@ -8,6 +8,7 @@ public class TestEnumeraciones {
 
         imprimirDiaSemana(Dias.DOMINGO);
         imprimirColor(Color.BLUE);
+        System.out.println(Color.RED.getHexCode());
 
         System.out.println("Continente no. 4: " + Continentes.EUROPA);
         System.out.println("Nro de paises en America: " + Continentes.AMERICA.getPaises());
