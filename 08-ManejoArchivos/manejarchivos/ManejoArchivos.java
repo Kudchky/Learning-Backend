@@ -1,4 +1,4 @@
-package manejoarchivos;
+package manejarchivos;
 
 import java.io.*;
 
