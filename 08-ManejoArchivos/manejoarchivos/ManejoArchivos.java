@@ -3,8 +3,9 @@ package manejoarchivos;
 import java.io.*;
 
 public class ManejoArchivos {
+    //Este metodo crea un archivo en el disco duro
     public static void crearArchivo(String nombreArchivo) {
-        //Este metodo crea un archivo en el disco duro
+
         File archivo = new File(nombreArchivo);// archivo representa un archivo en el sitema de archivos
         /* Ahora guardar archivo en disco */
         try {
@@ -19,4 +20,18 @@ public class ManejoArchivos {
             e.printStackTrace(System.out);
         }
     }
+
+    public static void escribirArchivo(String rutaArchivo,  String contenido) {
+        File archivo = new File(rutaArchivo);
+
+        try {
+            PrintWriter salida = new PrintWriter(archivo);
+            salida.println(contenido);
+            salida.close();
+            System.out.println("Se ha escrito el archivo");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace(System.out);
+        }
+    }
+
 }
