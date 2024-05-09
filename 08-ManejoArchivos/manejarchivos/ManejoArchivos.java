@@ -42,8 +42,27 @@ public class ManejoArchivos {
             PrintWriter salida = new PrintWriter(new FileWriter(archivo, true));
             salida.println(contenido);
             salida.close();
-            System.out.println("Se ha escrito al archivo");
+            System.out.println("Se ha anexado información al archivo");
         } catch(IOException e) {
+            e.printStackTrace(System.out);
+        }
+    }
+
+    public static void leerArchivo(String nombreArchivo) {
+        var archivo = new File(nombreArchivo);
+        //La clase Bufferedreader lo que hace es leer lineas completas del archivo caracater a
+        //caracter.
+        try {
+            var entrada = new BufferedReader(new FileReader(archivo));
+            var lectura = entrada.readLine();
+            while (lectura != null) {
+                System.out.println("lectura = " + lectura);
+                lectura = entrada.readLine();
+            }
+            entrada.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace(System.out);
+        } catch (IOException e) {
             e.printStackTrace(System.out);
         }
     }
