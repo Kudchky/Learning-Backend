@@ -34,4 +34,18 @@ public class ManejoArchivos {
         }
     }
 
+    public static void anexarArchivo(String rutaArchivo, String contenido) {
+        File archivo = new File(rutaArchivo);
+        //La Clase FileWriter es para indicar que se va anexar info al archivo
+        //donde true indica que se va hacer append de la informacion
+        try {
+            PrintWriter salida = new PrintWriter(new FileWriter(archivo, true));
+            salida.println(contenido);
+            salida.close();
+            System.out.println("Se ha escrito al archivo");
+        } catch(IOException e) {
+            e.printStackTrace(System.out);
+        }
+    }
+
 }
