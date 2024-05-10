@@ -1,14 +1,14 @@
 package pe.com.peliculas.datos;
 
 import pe.com.peliculas.domain.Pelicula;
-
+import pe.com.peliculas.excepciones.*;
 import java.util.List;
 
 public interface IAccesoDatos {
 
-    boolean exite(String nombreArchivo);
+    boolean exite(String nombreRecurso) throws AccesoDatosEx;
 
-    List<Pelicula> listar(String nombre);
+    List<Pelicula> listar(String nombreRecurso) throws LecturaDatosEx;
 
     void escribir(Pelicula pelicula, String nombreArchivo, boolean anexar);
 

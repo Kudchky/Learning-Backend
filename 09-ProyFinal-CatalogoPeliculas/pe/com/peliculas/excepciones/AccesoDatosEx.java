@@ -6,14 +6,3 @@ public class AccesoDatosEx extends Exception {
     }
 }
 
-class EscrituraDatosEx extends AccesoDatosEx {
-    public EscrituraDatosEx(String message) {
-        super(message);
-    }
-}
-
-class LecturaDatosEx extends AccesoDatosEx {
-    public LecturaDatosEx(String message) {
-        super(message);
-    }
-}
