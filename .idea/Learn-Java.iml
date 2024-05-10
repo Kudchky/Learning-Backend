@@ -11,6 +11,7 @@
       <sourceFolder url="file://$MODULE_DIR$/06-Enums" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/07-Generic" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/08-ManejoArchivos" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/09-ProyFinal-CatalogoPeliculas" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
