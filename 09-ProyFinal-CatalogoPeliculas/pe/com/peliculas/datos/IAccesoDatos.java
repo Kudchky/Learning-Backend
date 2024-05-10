@@ -2,6 +2,7 @@ package pe.com.peliculas.datos;
 
 import pe.com.peliculas.domain.Pelicula;
 import pe.com.peliculas.excepciones.*;
+
 import java.util.List;
 
 public interface IAccesoDatos {
@@ -10,11 +11,11 @@ public interface IAccesoDatos {
 
     List<Pelicula> listar(String nombreRecurso) throws LecturaDatosEx;
 
-    void escribir(Pelicula pelicula, String nombreArchivo, boolean anexar);
+    void escribir(Pelicula pelicula, String nombreRecurso, boolean anexar) throws EscrituraDatosEx;
 
-    String buscar(String nombreArchivo, String buscar);
+    String buscar(String nombreRecurso, String buscar) throws LecturaDatosEx;
 
-    void crear(String nombreArchivo);
+    void crear(String nombreRecurso) throws AccesoDatosEx;
 
-    void borrar(String nombreArchivo);
+    void borrar(String nombreRecurso) throws AccesoDatosEx;
 }

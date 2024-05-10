@@ -1,6 +1,9 @@
 package pe.com.peliculas.datos;
 
 import pe.com.peliculas.domain.Pelicula;
+import pe.com.peliculas.excepciones.AccesoDatosEx;
+import pe.com.peliculas.excepciones.EscrituraDatosEx;
+import pe.com.peliculas.excepciones.LecturaDatosEx;
 
 import java.io.*;
 import java.util.List;
@@ -22,8 +25,8 @@ public class AccesoDatosImpl implements IAccesoDatos {
     }
 
     @Override
-    public void escribir(Pelicula pelicula, String nombreArchivo, boolean anexar) {
-        File archivo = new File(nombreArchivo);
+    public void escribir(Pelicula pelicula, String nombreRecurso, boolean anexar) throws EscrituraDatosEx {
+        File archivo = new File(nombreRecurso);
 
         try {
             PrintWriter salida = new PrintWriter(new FileWriter(archivo, anexar));
@@ -36,7 +39,7 @@ public class AccesoDatosImpl implements IAccesoDatos {
     }
 
     @Override
-    public String buscar(String nombreArchivo, String buscar) {
+    public String buscar(String nombreRecurso, String buscar) throws LecturaDatosEx {
         return "";
     }
 
@@ -53,7 +56,7 @@ public class AccesoDatosImpl implements IAccesoDatos {
     }
 
     @Override
-    public void borrar(String nombreArchivo) {
+    public void borrar(String nombreArchivo) throws AccesoDatosEx {
 
     }
 }
