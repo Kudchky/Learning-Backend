@@ -12,6 +12,7 @@
       <sourceFolder url="file://$MODULE_DIR$/07-Generic" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/08-ManejoArchivos" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/09-ProyFinal-CatalogoPeliculas" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/09-ProyectoPeliculas" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
