@@ -27,7 +27,7 @@ public class AccesoDatosImpl implements IAccesoDatos {
                     linea = lector.readLine();
                 }
             } catch (IOException e) {
-                throw new LecturaDatosEx("Ocurrio un error en la lectura del archivo");
+                throw new LecturaDatosEx("Ocurrio un error en la lectura del archivo acontecio:");
             }
         } else {
             throw new LecturaDatosEx("Archivo o recurso no existe");
