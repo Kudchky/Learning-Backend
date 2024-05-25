@@ -8,7 +8,7 @@ import java.util.*;
 
 public class AccesoDatosImpl implements IAccesoDatos {
     @Override
-    public boolean existe(String nombreRecurso) throws AccesoDatosEx {
+    public boolean existe(String nombreRecurso) {
         File archivo = new File(nombreRecurso);
 
         return archivo.exists();
@@ -27,12 +27,13 @@ public class AccesoDatosImpl implements IAccesoDatos {
                     linea = lector.readLine();
                 }
             } catch (IOException e) {
-                throw new LecturaDatosEx("Ocurrio un error en la lectura del archivo acontecio:");
+                throw new LecturaDatosEx("Ocurrio un error en la lectura del archivo al listar " +
+                        "peliculas:");
             }
         } else {
             throw new LecturaDatosEx("Archivo o recurso no existe");
         }
-       return listaPeliculas;
+        return listaPeliculas;
     }
 
     @Override
@@ -40,8 +41,8 @@ public class AccesoDatosImpl implements IAccesoDatos {
         File archivo = new File(nombreRecurso);
         if (archivo.exists()) {
             try (PrintWriter escribir = new PrintWriter(new FileWriter(archivo, anexar))) {
-                escribir.println(pelicula.getNombre());
-                System.out.println("Se ha escrito correctamente pelicula al archivo");
+                escribir.println(pelicula.toString());
+                System.out.println("Se ha escrito correctamente pelicula al archivo" + pelicula);
             } catch (IOException e) {
                 throw new EscrituraDatosEx("Ocurrio un problema con la escritura de datos");
             }
@@ -57,17 +58,19 @@ public class AccesoDatosImpl implements IAccesoDatos {
         if (archivo.exists()) {
             try (var entrada = new BufferedReader(new FileReader(archivo))) {
                 String lectura = entrada.readLine();
+                int indice = 1;
                 while (lectura != null) {
-                    if (lectura.contains(dato)) {
-                        return "Se encontro el dato: " + dato;
+                    if (dato != null && dato.equalsIgnoreCase(lectura)) {
+                        return "Se encontro la Pelicula: " + dato + " en la linea nro. " + indice;
                     }
                     lectura = entrada.readLine();
+                    indice++;
                 }
             } catch (IOException e) {
-                throw new LecturaDatosEx("Error de lectura");
+                throw new LecturaDatosEx("Error de lectura al buscar pelicula");
             }
 
-            return "Dato no encontrado";
+            return "Pelicula no encontrado";
         } else {
             throw new LecturaDatosEx("El archivo no existe");
         }
@@ -75,12 +78,12 @@ public class AccesoDatosImpl implements IAccesoDatos {
 
     @Override
     public void crear(String nombreRecurso) throws AccesoDatosEx {
-        if (!this.existe(nombreRecurso)) {
-            File archivo = new File(nombreRecurso);
-            try (PrintWriter escritor = new PrintWriter(archivo)) {
+        File archivo = new File(nombreRecurso);
+        if (!archivo.exists()) {
+            try (PrintWriter escritor = new PrintWriter(new FileWriter(archivo))) {
                 System.out.println("Se creo archivo correctamente");
             } catch (IOException e) {
-                throw new EscrituraDatosEx("Ocurrio un problema con la creacion del archivo");
+                throw new AccesoDatosEx("Ocurrio un problema con la creacion del archivo");
             }
         } else {
             System.out.println("El archivo ya existe, esta creado");
@@ -89,12 +92,12 @@ public class AccesoDatosImpl implements IAccesoDatos {
 
     @Override
     public void borrar(String nombreRecurso) throws AccesoDatosEx {
-        if (this.existe(nombreRecurso)) {
-            File archivo = new File(nombreRecurso);
+        File archivo = new File(nombreRecurso);
+        if (archivo.exists()) {
             if (archivo.delete()) {
                 System.out.println("Archivo elimininado");
             } else {
-                throw new EscrituraDatosEx("No se pudo borrar el archivo");
+                throw new AccesoDatosEx("No se pudo borrar el archivo");
             }
         } else {
             System.out.println("El archivo no existe");

@@ -20,8 +20,6 @@ public class Pelicula {
 
     @Override
     public String toString() {
-        return "Pelicula: [" +
-                "nombre: " + this.nombre +
-                "]";
+        return this.nombre;
     }
 }
