@@ -1,11 +1,13 @@
 package pe.com.peliculas.negocio;
 
 public interface ICatalogoPeliculas {
-    void agregarPelicula(String nombrePelicula, String nombreArchivo);
+    String NOMBRE_RECURSO = "peliculas.txt";
 
-    void listarPeliculas(String nombreArchivo);
+    void agregarPelicula(String nombrePelicula);
 
-    void buscarPelicula(String nombreArchivo, String dato);
+    void listarPeliculas();
 
-    void iniciarArchivo(String nombreArchivo);
+    void buscarPelicula(String dato);
+
+    void iniciarCatalogoPeliculas();
 }

@@ -12,38 +12,51 @@ public class CatalogoPeliculasImpl implements ICatalogoPeliculas {
     }
 
     @Override
-    public void agregarPelicula(String nombrePelicula, String nombreArchivo) {
+    public void agregarPelicula(String nombrePelicula) {
+        boolean anexar = false;
         try {
-            datos.escribir(new Pelicula(nombrePelicula), nombreArchivo, true);
-        } catch (EscrituraDatosEx e) {
-            System.out.println("Error al agregar pelicula " + e.getMessage());
+            anexar = datos.existe(NOMBRE_RECURSO);
+            datos.escribir(new Pelicula(nombrePelicula), NOMBRE_RECURSO, anexar);
+        } catch (AccesoDatosEx e) {
+            System.out.println("Error de acceso a datos");
+            e.printStackTrace(System.out);
         }
     }
 
     @Override
-    public void listarPeliculas(String nombreArchivo) {
+    public void listarPeliculas() {
         try {
-            datos.listar(nombreArchivo).forEach(pelicula -> System.out.println("La pelicula " + pelicula));
-        } catch (LecturaDatosEx e) {
+            this.datos.listar(NOMBRE_RECURSO).forEach(pelicula -> System.out.println("La pelicula " + pelicula));
+        } catch (AccesoDatosEx e) {
             System.out.println("Error al listar peliculas " + e.getMessage());
+            e.printStackTrace(System.out);
         }
     }
 
     @Override
-    public void buscarPelicula(String nombreArchivo, String dato) {
+    public void buscarPelicula(String dato) {
+        String resultado = "No se encontro Pelicula";
         try {
-            System.out.println(datos.buscar(nombreArchivo, dato));
-        } catch (LecturaDatosEx e) {
+            resultado = this.datos.buscar(NOMBRE_RECURSO, dato);
+        } catch (AccesoDatosEx e) {
             System.out.println("Error al buscar pelicula" + e.getMessage());
         }
+
+        System.out.println("El resultado es: " + resultado);
     }
 
     @Override
-    public void iniciarArchivo(String nombreArchivo) {
+    public void iniciarCatalogoPeliculas() {
         try {
-            datos.crear(nombreArchivo);
+            if (this.datos.existe(NOMBRE_RECURSO)) {
+                this.datos.borrar(NOMBRE_RECURSO);
+                this.datos.crear(NOMBRE_RECURSO);
+            } else {
+                this.datos.crear(NOMBRE_RECURSO);
+            }
         } catch (AccesoDatosEx e) {
-            System.out.println("Error al iniciar archivo " + e.getMessage());
+            System.out.println("Error al iniciar catalogo de peliculas");
+            e.printStackTrace(System.out);
         }
     }
 }
