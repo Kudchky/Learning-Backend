@@ -6,10 +6,15 @@ import pe.com.peliculas.exceptions.*;
 import java.util.List;
 
 public interface IAccesoDatos {
-    boolean existe(String nombreRecurso);
-    List<Pelicula> listar(String nombre);
+    boolean existe(String nombreRecurso) throws AccesoDatosEx;
+
+    List<Pelicula> listar(String nombreRecurso) throws LecturaDatosEx;
+
     void escribir(Pelicula pelicula, String nombreRecurso, boolean anexar) throws EscrituraDatosEx;
+
     String buscar(String nombreRecurso, String dato) throws LecturaDatosEx;
-    void crear(String nombreRecurso) throws EscrituraDatosEx;
-    void borrar(String nombreRecurso) throws EscrituraDatosEx;
+
+    void crear(String nombreRecurso) throws AccesoDatosEx;
+
+    void borrar(String nombreRecurso) throws AccesoDatosEx;
 }

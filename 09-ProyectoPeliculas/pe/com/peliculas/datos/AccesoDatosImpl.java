@@ -8,21 +8,37 @@ import java.util.*;
 
 public class AccesoDatosImpl implements IAccesoDatos {
     @Override
-    public boolean existe(String nombreRecurso) {
+    public boolean existe(String nombreRecurso) throws AccesoDatosEx {
         File archivo = new File(nombreRecurso);
 
         return archivo.exists();
     }
 
     @Override
-    public List<Pelicula> listar(String nombre) {
-        return List.of();
+    public List<Pelicula> listar(String nombreRecurso) throws LecturaDatosEx {
+        var archivo = new File(nombreRecurso);
+        List<Pelicula> listaPeliculas = new ArrayList<>();
+
+        if (archivo.exists()) {
+            try (var lector = new BufferedReader(new FileReader(archivo))) {
+                var linea = lector.readLine();
+                while (linea != null) {
+                    listaPeliculas.add(new Pelicula(linea));
+                    linea = lector.readLine();
+                }
+            } catch (IOException e) {
+                throw new LecturaDatosEx("Ocurrio un error en la lectura del archivo");
+            }
+        } else {
+            throw new LecturaDatosEx("Archivo o recurso no existe");
+        }
+       return listaPeliculas;
     }
 
     @Override
     public void escribir(Pelicula pelicula, String nombreRecurso, boolean anexar) throws EscrituraDatosEx {
-        if (this.existe(nombreRecurso)) {
-            File archivo = new File(nombreRecurso);
+        File archivo = new File(nombreRecurso);
+        if (archivo.exists()) {
             try (PrintWriter escribir = new PrintWriter(new FileWriter(archivo, anexar))) {
                 escribir.println(pelicula.getNombre());
                 System.out.println("Se ha escrito correctamente pelicula al archivo");
@@ -36,8 +52,9 @@ public class AccesoDatosImpl implements IAccesoDatos {
 
     @Override
     public String buscar(String nombreRecurso, String dato) throws LecturaDatosEx {
-        if (this.existe(nombreRecurso)) {
-            var archivo = new File(nombreRecurso);
+        var archivo = new File(nombreRecurso);
+
+        if (archivo.exists()) {
             try (var entrada = new BufferedReader(new FileReader(archivo))) {
                 String lectura = entrada.readLine();
                 while (lectura != null) {
@@ -57,7 +74,7 @@ public class AccesoDatosImpl implements IAccesoDatos {
     }
 
     @Override
-    public void crear(String nombreRecurso) throws EscrituraDatosEx {
+    public void crear(String nombreRecurso) throws AccesoDatosEx {
         if (!this.existe(nombreRecurso)) {
             File archivo = new File(nombreRecurso);
             try (PrintWriter escritor = new PrintWriter(archivo)) {
@@ -71,7 +88,7 @@ public class AccesoDatosImpl implements IAccesoDatos {
     }
 
     @Override
-    public void borrar(String nombreRecurso) throws EscrituraDatosEx {
+    public void borrar(String nombreRecurso) throws AccesoDatosEx {
         if (this.existe(nombreRecurso)) {
             File archivo = new File(nombreRecurso);
             if (archivo.delete()) {
