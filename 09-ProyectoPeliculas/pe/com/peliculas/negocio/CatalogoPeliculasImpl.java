@@ -13,9 +13,8 @@ public class CatalogoPeliculasImpl implements ICatalogoPeliculas {
 
     @Override
     public void agregarPelicula(String nombrePelicula) {
-        boolean anexar = false;
         try {
-            anexar = datos.existe(NOMBRE_RECURSO);
+            boolean anexar = datos.existe(NOMBRE_RECURSO);
             datos.escribir(new Pelicula(nombrePelicula), NOMBRE_RECURSO, anexar);
         } catch (AccesoDatosEx e) {
             System.out.println("Error de acceso a datos");
