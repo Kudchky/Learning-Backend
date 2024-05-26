@@ -1,4 +1,4 @@
-package domain;
+package entidad;
 
 public class Persona {
     private int idPersona;
