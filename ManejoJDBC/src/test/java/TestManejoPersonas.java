@@ -8,8 +8,6 @@ public class TestManejoPersonas {
         PersonaDAO personaDAO = new PersonaDAO();
         List<Persona> personaList = personaDAO.selection();
 
-        for (Persona persona: personaList) {
-            System.out.println(persona);
-        }
+        personaList.forEach(System.out::println);
     }
 }
