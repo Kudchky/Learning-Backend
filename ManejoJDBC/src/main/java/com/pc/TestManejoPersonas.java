@@ -1,5 +1,7 @@
-import datos.PersonaDAO;
-import entidad.Persona;
+package com.pc;
+
+import com.pc.datos.PersonaDAO;
+import com.pc.entidad.Persona;
 
 import java.util.List;
 

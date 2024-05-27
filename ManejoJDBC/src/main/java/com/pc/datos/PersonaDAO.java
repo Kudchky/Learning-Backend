@@ -1,14 +1,20 @@
-package datos;
+package com.pc.datos;
 
-import entidad.Persona;
+import com.pc.entidad.Persona;
 
 import java.sql.*;
 import java.util.*;
 
-import static datos.Conexion.*;
+import static com.pc.datos.Conexion.*;
 
 public class PersonaDAO {
     private static final String SQL_SELECT = "SELECT * FROM persona";
+
+    private static final String COL_ID_PERSONA = "id_persona";
+    private static final String COL_NOMBRE = "nombre";
+    private static final String COL_APELLIDOS = "apellidos";
+    private static final String COL_EMAIL = "email";
+    private static final String COL_TELEFONO ="telefono";
 
     public List<Persona> selection() {
         List<Persona> personaList = new ArrayList<>();
@@ -18,11 +24,11 @@ public class PersonaDAO {
              ResultSet resultSet = statement.executeQuery();
         ) {
             while (resultSet.next()) {
-                int idPersona = resultSet.getInt("id_persona");
-                String nombre = resultSet.getString("nombre");
-                String apellidos = resultSet.getString("apellidos");
-                String email = resultSet.getString("email");
-                String telefono = resultSet.getString("telefono");
+                int idPersona = resultSet.getInt(COL_ID_PERSONA);
+                String nombre = resultSet.getString(COL_NOMBRE);
+                String apellidos = resultSet.getString(COL_APELLIDOS);
+                String email = resultSet.getString(COL_EMAIL);
+                String telefono = resultSet.getString(COL_TELEFONO);
 
                 Persona persona = new Persona(idPersona, nombre, apellidos, email, telefono);
                 personaList.add(persona);
@@ -31,6 +37,10 @@ public class PersonaDAO {
             e.printStackTrace(System.out);
         }
         return personaList;
+    }
+
+    public void insertar() {
+
     }
 }
 

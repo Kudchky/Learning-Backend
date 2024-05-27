@@ -1,4 +1,4 @@
-package entidad;
+package com.pc.entidad;
 
 public class Persona {
     private int idPersona;
