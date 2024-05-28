@@ -18,13 +18,18 @@ public class TestManejoPersonas {
         "988888745"));
         */
 
-        int actualizarFila = personaDAO.actualizar(new Persona(24, "Pepito", "Cholan", "pcholan@gmail" +
-                ".com", "987456123"));
+        /*
+        int actualizarFila = personaDAO.actualizar(new Persona(24, "Pepito", "Cholan",
+         "pcholan@gmail" +
+               ".com", "987456123"));
+        */
+
+        int borrarFila = personaDAO.eliminar(new Persona(9));
 
         System.out.println("______________Resultado 2________________");
         personaList = personaDAO.selection();
         personaList.forEach(el -> System.out.println(el.toString()));
 
-        System.out.println("Se actualizo ? " + actualizarFila);
+        System.out.println("Se borro fila ? " + borrarFila);
     }
 }

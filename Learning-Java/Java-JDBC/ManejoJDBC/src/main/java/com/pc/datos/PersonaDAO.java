@@ -9,13 +9,9 @@ import static com.pc.datos.Conexion.*;
 
 public class PersonaDAO {
     private static final String SQL_SELECT = "SELECT * FROM persona";
-    private static final String SQL_INSERT = "INSERT INTO persona (nombre, apellidos, email, telefono)" +
-                                             "VALUES (?, ?, ?, ?)";
-    private static final String SQL_UPDATE = "UPDATE persona " +
-                                             "SET nombre = ?, apellidos = ?, email = ?, telefono = ? " +
-                                             "WHERE id_persona = ?";
-    private static final String SQL_DELETE = "DELETE FROM persona" +
-                                             "WHERE id_persona = ?";
+    private static final String SQL_INSERT = "INSERT INTO persona nombre, apellidos, email, telefono VALUES (?, ?, ?, ?)";
+    private static final String SQL_UPDATE = "UPDATE persona SET nombre = ?, apellidos = ?, email = ?, telefono = ? WHERE id_persona = ?";
+    private static final String SQL_DELETE = "DELETE FROM persona WHERE id_persona = ?";
 
     public List<Persona> selection() {
         List<Persona> personaList = new ArrayList<>();
@@ -79,12 +75,12 @@ public class PersonaDAO {
         int nroRow = 0;
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(SQL_DELETE)
-        ){
+        ) {
             statement.setInt(1, persona.getIdPersona());
 
             nroRow = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace(System.out);
         }
         return nroRow;
     }
