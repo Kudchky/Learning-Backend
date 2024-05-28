@@ -10,14 +10,17 @@ import static com.pc.datos.Conexion.*;
 public class PersonaDAO {
     private static final String SQL_SELECT = "SELECT * FROM persona";
     private static final String SQL_INSERT = "INSERT INTO persona (nombre, apellidos, email, telefono)" +
-            "VALUES (?, ?, ?, ?)";
+                                             "VALUES (?, ?, ?, ?)";
+    private static final String SQL_UPDATE = "UPDATE persona " +
+                                             "SET nombre = ?, apellidos = ?, email = ?, telefono = ? " +
+                                             "WHERE id_persona = ?";
 
     public List<Persona> selection() {
         List<Persona> personaList = new ArrayList<>();
 
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(SQL_SELECT);
-             ResultSet resultSet = statement.executeQuery();
+             ResultSet resultSet = statement.executeQuery()
         ) {
             while (resultSet.next()) {
                 int idPersona = resultSet.getInt("id_persona");
@@ -50,6 +53,24 @@ public class PersonaDAO {
             e.printStackTrace(System.out);
         }
         return nroRows;
+    }
+
+    public int actualizar(Persona persona) {
+        int nroRow = 0;
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(SQL_UPDATE)
+        ) {
+            statement.setString(1, persona.getNombre());
+            statement.setString(2, persona.getApellidos());
+            statement.setString(3, persona.getEmail());
+            statement.setString(4, persona.getTelefono());
+            statement.setInt(5, persona.getIdPersona());
+
+            nroRow = statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+        }
+        return nroRow;
     }
 }
 

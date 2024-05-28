@@ -13,10 +13,18 @@ public class TestManejoPersonas {
 
         personaList.forEach(System.out::println);
 
-        int registros = personaDAO.insertar(new Persona("Brenda", "Sagastegui", "bsagastegui@gmail.com",
-                "988888745"));
+        /*
+        personaDAO.insertar(new Persona("Brenda", "Sagastegui", "bsagastegui@gmail.com",
+        "988888745"));
+        */
+
+        int actualizarFila = personaDAO.actualizar(new Persona(24, "Pepito", "Cholan", "pcholan@gmail" +
+                ".com", "987456123"));
 
         System.out.println("______________Resultado 2________________");
-        personaList.forEach(System.out::println);
+        personaList = personaDAO.selection();
+        personaList.forEach(el -> System.out.println(el.toString()));
+
+        System.out.println("Se actualizo ? " + actualizarFila);
     }
 }
