@@ -1,17 +1,18 @@
 package com.pc;
 
-import com.pc.datos.PersonaDAO;
+import com.pc.datos.*;
 import com.pc.entidad.Persona;
+import com.pc.entidad.Usuario;
 
 import java.util.List;
 
 public class TestManejoPersonas {
     public static void main(String[] args) {
-        PersonaDAO personaDAO = new PersonaDAO();
-        List<Persona> personaList = personaDAO.selection();
-        System.out.println("________________Resultado_______________");
-
-        personaList.forEach(System.out::println);
+//        PersonaDAO personaDAO = new PersonaDAO();
+//        List<Usuario> usuarioList = personaDAO.selection();
+//        System.out.println("________________Resultado_______________");
+//
+//        personaList.forEach(System.out::println);
 
         /*
         personaDAO.insertar(new Persona("Brenda", "Sagastegui", "bsagastegui@gmail.com",
@@ -24,12 +25,20 @@ public class TestManejoPersonas {
                ".com", "987456123"));
         */
 
-        int borrarFila = personaDAO.eliminar(new Persona(9));
+//        int borrarFila = personaDAO.eliminar(new Persona(9));
+//
+//        System.out.println("______________Resultado 2________________");
+//        personaList = personaDAO.selection();
+//        personaList.forEach(el -> System.out.println(el.toString()));
+//
+//        System.out.println("Se borro fila ? " + borrarFila);
 
-        System.out.println("______________Resultado 2________________");
-        personaList = personaDAO.selection();
-        personaList.forEach(el -> System.out.println(el.toString()));
+        UsuarioDAO usuarioDao = new UsuarioDAO();
 
-        System.out.println("Se borro fila ? " + borrarFila);
+        usuarioDao.insert(new Usuario("amidamaru", "gft565@fdf"));
+
+        List<Usuario> usuarioList = usuarioDao.seleccionar();
+
+        usuarioList.forEach(System.out::println);
     }
 }
