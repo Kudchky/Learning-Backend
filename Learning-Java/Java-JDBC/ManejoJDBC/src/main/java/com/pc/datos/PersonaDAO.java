@@ -13,7 +13,7 @@ public class PersonaDAO {
     private static final String SQL_UPDATE = "UPDATE persona SET nombre = ?, apellidos = ?, email = ?, telefono = ? WHERE id_persona = ?";
     private static final String SQL_DELETE = "DELETE FROM persona WHERE id_persona = ?";
 
-    public List<Persona> selection() {
+    public List<Persona> seleccionar() {
         List<Persona> personaList = new ArrayList<>();
 
         try (Connection connection = getConnection();

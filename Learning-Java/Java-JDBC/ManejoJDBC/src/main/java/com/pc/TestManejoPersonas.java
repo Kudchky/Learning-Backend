@@ -35,10 +35,17 @@ public class TestManejoPersonas {
 
         UsuarioDAO usuarioDao = new UsuarioDAO();
 
-        usuarioDao.insert(new Usuario("amidamaru", "gft565@fdf"));
+        //usuarioDao.insertar(new Usuario("amidamaru", "gft565@fdf"));
 
         List<Usuario> usuarioList = usuarioDao.seleccionar();
 
+        usuarioList.forEach(System.out::println);
+
+        usuarioDao.actualizar(new Usuario(2, "meliodas", "gfddd344343"));
+
+        usuarioList = usuarioDao.seleccionar();
+
+        System.out.println("_____________RESULTADO ACTUALIZADO___________________");
         usuarioList.forEach(System.out::println);
     }
 }
