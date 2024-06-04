@@ -41,7 +41,8 @@ public class TestManejoPersonas {
 
         usuarioList.forEach(System.out::println);
 
-        usuarioDao.actualizar(new Usuario(2, "meliodas", "gfddd344343"));
+        //usuarioDao.actualizar(new Usuario(2, "meliodas", "gfddd344343"));
+        usuarioDao.eliminar(new Usuario(2));
 
         usuarioList = usuarioDao.seleccionar();
 
