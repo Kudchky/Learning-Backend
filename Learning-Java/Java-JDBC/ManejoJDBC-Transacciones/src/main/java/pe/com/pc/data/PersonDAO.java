@@ -8,15 +8,24 @@ import java.util.*;
 import static pe.com.pc.data.Conexion.*;
 
 public class PersonDAO {
+    private Connection transactionalConnection;
+
     private static final String SQL_SELECT = "SELECT * FROM persona";
     private static final String SQL_INSERT = "INSERT INTO persona nombre, apellidos, email, telefono VALUES (?, ?, ?, ?)";
     private static final String SQL_UPDATE = "UPDATE persona SET nombre = ?, apellidos = ?, email = ?, telefono = ? WHERE id_persona = ?";
     private static final String SQL_DELETE = "DELETE FROM persona WHERE id_persona = ?";
 
+    public PersonDAO() {
+    }
+
+    public PersonDAO(Connection transactionalConnection) {
+        this.transactionalConnection = transactionalConnection;
+    }
+
     public List<Person> seleccionar() {
         List<Person> personList = new ArrayList<>();
 
-        try (Connection connection = getConnection();
+        try (Connection connection = this.transactionalConnection != null ? this.transactionalConnection : getConnection();
              PreparedStatement statement = connection.prepareStatement(SQL_SELECT);
              ResultSet resultSet = statement.executeQuery()
         ) {
@@ -38,7 +47,8 @@ public class PersonDAO {
 
     public int insertar(Person person) {
         int nroRows = 0;
-        try (Connection connection = getConnection();
+        try (Connection connection = this.transactionalConnection != null ?
+                this.transactionalConnection : getConnection();
              PreparedStatement statement = connection.prepareStatement(SQL_INSERT)
         ) {
             statement.setString(1, person.getNombre());
@@ -55,7 +65,8 @@ public class PersonDAO {
 
     public int actualizar(Person person) {
         int nroRow = 0;
-        try (Connection connection = getConnection();
+        try (Connection connection = this.transactionalConnection != null ?
+                this.transactionalConnection : getConnection();
              PreparedStatement statement = connection.prepareStatement(SQL_UPDATE)
         ) {
             statement.setString(1, person.getNombre());
@@ -73,7 +84,8 @@ public class PersonDAO {
 
     public int eliminar(Person person) {
         int nroRow = 0;
-        try (Connection connection = getConnection();
+        try (Connection connection = this.transactionalConnection != null ?
+                this.transactionalConnection : getConnection();
              PreparedStatement statement = connection.prepareStatement(SQL_DELETE)
         ) {
             statement.setInt(1, person.getIdPersona());
